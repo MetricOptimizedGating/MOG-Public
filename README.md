@@ -4,6 +4,10 @@ MOG is a MATLAB based image reconstruction pipeline for fetal MRI. It was develo
 
 For more information on MOG, visit: http://www.sickkids.ca/Research/fetalMRI/MOG/index.html
 
+![](http://i.imgur.com/BgiJxqZ.jpg)
+====
+![](http://i.imgur.com/k1QPaIY.png)
+
 ![](http://i.imgur.com/OgIxTMS.jpg)
 ====
 To run code: 

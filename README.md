@@ -6,7 +6,7 @@ For more information on MOG, visit: http://www.sickkids.ca/Research/fetalMRI/MOG
 
 ![](http://i.imgur.com/BgiJxqZ.jpg)
 ====
-![](http://i.imgur.com/k1QPaIY.png)
+![](http://i.imgur.com/1ICo19P.jpg)
 
 ![](http://i.imgur.com/OgIxTMS.jpg)
 ====

@@ -21,10 +21,12 @@ Structure containing times for each measurement and echos transformed and croppe
 
 Structure:
 
-    Data(Rows,Phase Encodes).Times(Measured Cardiac Phases)
-    Data(Rows,Phase Encodes).KSpace(Columns, Coils, Frames)
+    Data(Rows,Velocity Encodes).Times(Measured Cardiac Phases)
+    Data(Rows,Velocity Encodes).KSpace(Columns, Coils, Measured Cardiac Phase)
 
-In Siemens version there are two files read_raw_data.m and write_raw_data.m excluded from this repository.
+In Siemens version there are two files read_raw_data.m and write_raw_data.m excluded from this repository but found on Siemens IDEA forum. 
+
+The Metric Optimization code found here uses two parameter optimization as described in Jansz et al. We are further developing MOG with multiparamter optimization which will be available on github evetually. 
 
 ![](http://i.imgur.com/kncff3i.jpg)
 ====

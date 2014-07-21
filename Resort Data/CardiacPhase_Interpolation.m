@@ -48,8 +48,18 @@ LeftIndices=wrapIndices(isort(imin));
 RightIndices=wrapIndices(isort(imin+1));
 
 % Calculate nearest neighboors distances
-LeftDistances=repmat(ReconPhases',[1 nRows])-sortCP(imin(:,:,1));
-RightDistances=sortCP(imin(:,:,1)+1)-repmat(ReconPhases',[1 nRows]);
+LeftDistances=abs(repmat(ReconPhases',[1 nRows])-sortCP(imin(:,:,1)));
+RightDistances=abs(sortCP(imin(:,:,1)+1)-repmat(ReconPhases',[1 nRows]));
+
+% Make sure total distance is not zero
+i=find((LeftDistances+RightDistances)==0);
+if ~isempty(i)
+temp=abs(sortCP(imin(:,:,1)+2)-repmat(ReconPhases',[1 nRows]));
+RightDistances(i)=temp(i);
+temp=wrapIndices(isort(imin+2));
+RightIndices(i)=temp(i);
+end
+
 
 % Calculate nearest neighboors interpolation weightings
 LeftWeights=1-LeftDistances./(LeftDistances+RightDistances);

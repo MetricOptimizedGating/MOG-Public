@@ -1,0 +1,17 @@
+MOG 2.0
+
+Release Date Sept 22, 2014
+
+A) Additions
+
+- Added option to run multi parameter model afer two parameter model with refine button when displaying results.  Results from mulit-paramter model are subsequently displayed
+
+- Added version check to run every 30 days againts latest release on github.
+
+B) Removals
+C) Changes
+D) Fixes
+
+Tested on MATLAB 2013b and 2012b.
+
+Note: Refine method is quite small

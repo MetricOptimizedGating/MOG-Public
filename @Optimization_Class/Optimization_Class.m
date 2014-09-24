@@ -5,6 +5,7 @@ classdef Optimization_Class
         metrix
         hr1s
         hr2s
+        RWaveTimes
     end
 end
 

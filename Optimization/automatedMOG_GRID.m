@@ -3,9 +3,9 @@ function [Optimization,Data_Properties]=automatedMOG_GRID(Data_Properties)
 Optimization=Optimization_Class();
 [minhr1,minhr2,minhr,maxhr,hrs0,Data_Properties.PatientType]=determine_patient_type(Data_Properties.Data);
 
-if strcmp(Data_Properties.DataType{2},'FULL') && Data_Properties.Trial==1;
-    Data_Properties=reduce_coils(Data_Properties);
-end
+% if strcmp(Data_Properties.DataType{2},'FULL') && Data_Properties.Trial==1;
+%     Data_Properties=reduce_coils(Data_Properties);
+% end
 
 if strcmp(Data_Properties.DataType{2},'GRAPPA')
 Data_Properties.DataType{2}='ZEROS';

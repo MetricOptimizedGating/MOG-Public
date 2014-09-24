@@ -14,6 +14,8 @@ set(gca,'YDir','normal')
 axis 'square'
 end
 
+
+
 xlabel('Heart Rate 1','FontSize',12)
 ylabel('Heart Rate 2','FontSize',12)
 box('on');
@@ -24,6 +26,6 @@ cbfreeze
 % mark actual minimum
 hold on;
 plot(optimalrates(1,1), optimalrates(1,2), 'w+');
-hold off;
+hold on;
 title('Reconstrution Quality','FontSize',14)
 end

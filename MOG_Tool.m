@@ -3,14 +3,15 @@ function MOG_Tool
 % Load and read in raw data file
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 restart='Yes';
+versionCheck()
 while strcmp(restart,'Yes')
     Data_Properties=Data_Class();
     [filename,path]=uigetfile({'*.dat;*.mat','MOG Files (*.dat,*.mat)'});
     if strcmp(filename(end-3:end),'.dat');
-         [Data_Properties.Measurements, Data_Properties.Data, Data_Properties.SiemensOS, Data_Properties.IMAStart] = read_raw_data(path,filename);
-    % This script reads in protocol info including the target vessel and
-    % patient name. Currently tested for Siemens PCMR data at SickKids only. Set variable
-    % to 'off' for anonomyzed results
+        [Data_Properties.Measurements, Data_Properties.Data, Data_Properties.SiemensOS, Data_Properties.IMAStart] = read_raw_data(path,filename);
+        % This script reads in protocol info including the target vessel and
+        % patient name. Currently tested for Siemens PCMR data at SickKids only. Set variable
+        % to 'off' for anonomyzed results
         Data_Properties.Protocol = read_protocol_info(path,filename,'off');
     elseif strcmp(filename(end-3:end),'.mat');
         load ([path,filename])
@@ -29,10 +30,8 @@ while strcmp(restart,'Yes')
     user_input='retry';
     while strcmp(user_input,'retry')
         
-         [Data_Properties,user_input] = selectROI(Data_Properties);
-%    Data_Properties.yDimensions=119:129;
- %       Data_Properties.xDimensions=80:90;
- %       Data_Properties.Trial=Data_Properties.Trial+1;
+        [Data_Properties,user_input] = selectROI(Data_Properties);
+        Data_Properties.Trial=Data_Properties.Trial+1;
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Perform two-parameter grid search
@@ -42,21 +41,32 @@ while strcmp(restart,'Yes')
             restart=questdlg('Would you like to reconstruct a different file?','Analysis Incomplete','Yes', 'No', 'Yes');
         else
             [Optimization,Data_Properties]=automatedMOG_GRID(Data_Properties);
+            Optimization.RWaveTimes = two_para_model(Data_Properties.ScanLength, [Optimization.minhr1, Optimization.minhr2]);
             
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % Display entropy landcape and optimum images
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             
             user_input=display_results(Data_Properties,Optimization);
+           
+            %             plot(diff(two_para_model(Data_Properties.ScanLength, [Optimization.minhr1, Optimization.minhr2])),'b')
+            %             hold on
+            %             plot(diff(Optimization.RWaveTimes),'r.')
+            %             hold off
+            
+        if strcmp(user_input,'refine')
+            [RWaveTimes,Data_Properties]=automatedMOG_FMIN(Data_Properties,Optimization.RWaveTimes);
+            Optimization.RWaveTimes=RWaveTimes;
+            user_input=display_refined_results(Data_Properties,Optimization);
+        end
             
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            % Patch Raw Data File or Restart
+            % Patch Raw Data File or Restart or Refine
             
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             if strcmp(user_input, 'yes') && strcmp(filename(end-3:end),'.dat');
-                RWaveTimes = two_para_model(Data_Properties.ScanLength, [Optimization.minhr1, Optimization.minhr2]);
                 clear Data_Properties.Data
-                [Data_Properties.Measurements] = patch_measurement_data(Data_Properties.Measurements, RWaveTimes, Data_Properties.SiemensOS);
+                [Data_Properties.Measurements] = patch_measurement_data(Data_Properties.Measurements, Optimization.RWaveTimes, Data_Properties.SiemensOS);
                 write_raw_data(Data_Properties.Measurements, path, filename, Data_Properties.SiemensOS, Data_Properties.IMAStart);
                 clear('Data_Properties.Measurements')
                 restart=questdlg('Would you like to reconstruct another file?','Analysis Complete','Yes', 'No', 'Yes');
@@ -65,6 +75,7 @@ while strcmp(restart,'Yes')
                 restart=questdlg('*_patched.mat file has been saved. Would you like to reconstruct another file?','Analysis Complete','Yes', 'No', 'Yes');
             elseif strcmp(user_input, 'no')
                 restart=questdlg('Would you like to reconstruct another file?','Analysis Complete','Yes', 'No', 'Yes');
+           
             end
         end
     end

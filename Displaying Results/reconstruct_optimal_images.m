@@ -1,5 +1,5 @@
-function Optimal_Images =  reconstruct_optimal_images(Data_Properties,optimalrates)
-RWaveTimes = two_para_model(Data_Properties.ScanLength,optimalrates);
+function Optimal_Images =  reconstruct_optimal_images(Data_Properties,RWaveTimes)
+% RWaveTimes = two_para_model(Data_Properties.ScanLength,optimalrates);
 KSpace = resort_data_vectorized(Data_Properties.Data, RWaveTimes, 30);
 KSpace=permute(KSpace,[3 1 4 5 2]);
 Images = reconstruct_images(Data_Properties,KSpace);

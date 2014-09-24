@@ -1,0 +1,3 @@
+ Last version check: 22/9/2014;
+ Current Version: 1.0;
+ Release Date: September 22, 2014;

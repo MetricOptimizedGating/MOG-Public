@@ -27,7 +27,8 @@ handles.output = hObject;
 handles.stop_now = 0;
 Data_Properties=varargin{1};
 Optimization=varargin{2};
-handles.Images =  reconstruct_optimal_images(Data_Properties,[Optimization.minhr1,Optimization.minhr2]);
+RWaveTimes=Optimization.RWaveTimes;
+handles.Images =  reconstruct_optimal_images(Data_Properties,RWaveTimes);
 handles.FigureData=Metric_Landscape(Optimization);
 handles.xDimensions=Data_Properties.xDimensions;
 handles.yDimensions=Data_Properties.yDimensions;
@@ -104,3 +105,11 @@ function pushbutton8_Callback(hObject, eventdata, handles)
 handles.stop_now = 1;
 handles.yesno='retry';
 guidata(hObject, handles);
+
+
+% --- Executes on button press in refineButton.
+function refineButton_Callback(hObject, eventdata, handles)
+handles.stop_now = 1;
+handles.yesno='refine';
+guidata(hObject, handles);
+

@@ -1,5 +1,6 @@
 function [Data_Properties,user_input] = selectROI(Data_Properties)
-temp =  reconstruct_optimal_images(Data_Properties,[mean(extract_HR_ECG(Data_Properties.Data))*0.9 mean(extract_HR_ECG(Data_Properties.Data))*0.9]);
+RWaveTimes = two_para_model(Data_Properties.ScanLength,[mean(extract_HR_ECG(Data_Properties.Data))*0.9 mean(extract_HR_ECG(Data_Properties.Data))*0.9]);
+temp =  reconstruct_optimal_images(Data_Properties,RWaveTimes);
 boundary_condition=[];
 while isempty(boundary_condition)
     if strcmp(Data_Properties.DataType{1},'CINE')

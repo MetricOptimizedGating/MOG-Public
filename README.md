@@ -38,6 +38,8 @@ To run the multi-parameter model select refine, once optimization is complete a 
 
 If you are satisfied with the results select patched to save the results.
 
+MOG has been tested on MATLAB versions R2013a and R2012b.
+
 A version of MOG which inputs Siemens raw data header files (*.dat) and outputs optimized header files is available on the IDEA Forum (www.mr-idea.com). This version is the same as found on this repository with the exception of two files read_raw_data.m and write_raw_data.m. The Siemens version works for VB or VD data headers. GRAPPA reconstruction with raw data headers as output does not currently work but is in development. 
 
 

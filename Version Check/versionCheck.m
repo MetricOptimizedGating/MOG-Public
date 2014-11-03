@@ -1,6 +1,6 @@
 function versionCheck
-localVersion='2.0';
-localVersionDate='September 22, 2014';
+localVersion='2.1';
+localVersionDate='October 2, 2014';
 % Check when version what last checked
 LastCheck=textread('VersionCheck.txt','%s', 'delimiter','/');
 LastCheckMonth=str2num(cell2mat(LastCheck(2)));

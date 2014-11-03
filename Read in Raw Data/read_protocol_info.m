@@ -2,7 +2,7 @@ function [Protocol_Info,Protocol] = read_protocol_info(pathname,filename,Patient
 % %% Get File
 % [filename,pathname,dummy]=uigetfile('*.dat','multiselect','on');
 %%%% Open file
-fid = fopen([pathname '\' filename], 'r');
+fid = fopen([pathname filesep filename], 'r');
 if (fid==-1),
     error(['Error reading ', filename,' in ', pathname,' directory']),
 end

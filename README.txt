@@ -1,19 +1,54 @@
-README - September 22, 2014
+MATLAB Compiler
 
-To run code: 
+1. Prerequisites for Deployment 
 
-load ('MOG_Test_Data.mat')
+. Verify the MATLAB Compiler Runtime (MCR) is installed and ensure you    
+  have installed version 8.1 (R2013a).   
 
-MOG_Tool(Data,Coordinates)
+. If the MCR is not installed, do the following:
+  (1) enter
+  
+      >>mcrinstaller
+      
+      at MATLAB prompt. The MCRINSTALLER command displays the 
+      location of the MCR Installer.
 
-output: metric optimized heart rate.
+  (2) run the MCR Installer.
 
-Structure containing times for each measurement and echos transformed and cropped in the frequency encoding direction.
+Or download the Windows 32-bit version of the MCR for R2013a 
+from the MathWorks Web site by navigating to
 
-Structure:
+   http://www.mathworks.com/products/compiler/mcr/index.html
+   
+   
+For more information about the MCR and the MCR Installer, see 
+Distribution to End Users in the MATLAB Compiler documentation  
+in the MathWorks Documentation Center.    
 
-Data(Rows,Phase Encodes).Times(Measured Cardiac Phases)
-Data(Rows,Phase Encodes).KSpace(Columns, Coils, Frames)
+
+NOTE: You will need administrator rights to run MCRInstaller. 
 
 
-In Siemens version there are two files read_raw_data.m and write_raw_data.m excluded from this repository.
+2. Files to Deploy and Package
+
+Files to package for Standalone 
+================================
+-MOG_GridTool_2_0_32bit_24092014.exe
+-MCRInstaller.exe 
+   -if end users are unable to download the MCR using the above  
+    link, include it when building your component by clicking 
+    the "Add MCR" link in the Deployment Tool
+-This readme file 
+
+3. Definitions
+
+For information on deployment terminology, go to 
+http://www.mathworks.com/help. Select MATLAB Compiler >   
+Getting Started > About Application Deployment > 
+Application Deployment Terms in the MathWorks Documentation 
+Center.
+
+
+
+
+

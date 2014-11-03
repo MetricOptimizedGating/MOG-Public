@@ -1,5 +1,9 @@
 function [HR,Times]=RRIntervals_to_RR(RRIntervals,Times)
-temp_t=reshape(Times,size(Times,1)*size(Times,2),1);
+if size(size(Times),2)==3
+temp_t=reshape(Times,size(Times,1)*size(Times,2)*size(Times,3),1);
+else
+temp_t=reshape(Times,size(Times,1)*size(Times,2),1);    
+end
 t=sort(temp_t);
 i=find(t==0,1,'last');
 Times=t(i:end);

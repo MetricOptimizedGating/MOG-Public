@@ -33,7 +33,7 @@ NOTE: You will need administrator rights to run MCRInstaller.
 
 Files to package for Standalone 
 ================================
--MOG_GridTool_2_0_32bit_24092014.exe
+-MOGTOOL.exe
 -MCRInstaller.exe 
    -if end users are unable to download the MCR using the above  
     link, include it when building your component by clicking 

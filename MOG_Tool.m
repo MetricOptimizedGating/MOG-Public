@@ -46,19 +46,22 @@ while strcmp(restart,'Yes')
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % Display entropy landcape and optimum images
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            
+            if (strcmp( Data_Properties.DataType(1),'CINE'))
             user_input=display_results(Data_Properties,Optimization);
-           
+                 if strcmp(user_input,'refine')
+                [RWaveTimes,Data_Properties]=automatedMOG_FMIN(Data_Properties,Optimization.RWaveTimes);
+                Optimization.RWaveTimes=RWaveTimes;
+                user_input=display_refined_results(Data_Properties,Optimization);
+                end
+            else
+            user_input=display_results_flow(Data_Properties,Optimization);
+            end
             %             plot(diff(two_para_model(Data_Properties.ScanLength, [Optimization.minhr1, Optimization.minhr2])),'b')
             %             hold on
             %             plot(diff(Optimization.RWaveTimes),'r.')
             %             hold off
             
-        if strcmp(user_input,'refine')
-            [RWaveTimes,Data_Properties]=automatedMOG_FMIN(Data_Properties,Optimization.RWaveTimes);
-            Optimization.RWaveTimes=RWaveTimes;
-            user_input=display_refined_results(Data_Properties,Optimization);
-        end
+       
             
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % Patch Raw Data File or Restart or Refine

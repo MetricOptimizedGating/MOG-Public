@@ -1,6 +1,6 @@
-MOG 2.0
+MOG 2.3
 
-Release Date Sept 22, 2014
+Release Date Nov 28, 2014
 
 A) Additions
 

@@ -42,14 +42,21 @@ handles.resize=0;
 guidata(hObject, handles);
 % --- Outputs from this function are returned to the command line.
 function varargout = display_results_OutputFcn(hObject, eventdata, handles)  %#ok<*STOUT>
+% check which version of matlab is running
+matlab_version = version('-release');
 Images=handles.Images;
         if strcmp(handles.DataType{1},'CINE')
 h=imshow(Images(:,:,1),[min(min(min((Images(handles.yDimensions,handles.xDimensions,:))))),max(max(max((Images(handles.yDimensions,handles.xDimensions,:)))))],'Parent',handles.axes1);
         else
 h=imshow(Images(:,:,1),[],'Parent',handles.axes1);
         end
-colormap gray
+        ax=gca;
+if ( strcmp(matlab_version,'2014b')==0)
+colormap gray;
 freezeColors %freeze this plot's colormap
+else
+colormap (ax,'gray');
+end
 axis 'image'
 set(h,'hittest','off')
 hFig = ancestor(hObject,'figure');
@@ -57,14 +64,25 @@ set(hFig,'name','Displaying Results');
 guidata(hObject, handles);
 title(handles.Protocol,'FontSize',14)
 axis 'square'
-colormap jet % won't change any frozen plots
-entropy_landscape_GUI(handles.FigureData,handles.OptimalRates,handles.patientType)
+ax2=gca;
+if ( strcmp(matlab_version,'2014b')==0)
+colormap jet; 
+else
+colormap (ax2,'jet'); % won't change any frozen plots   
+end
+entropy_landscape_GUI(handles.FigureData,handles.OptimalRates,handles.patientType, matlab_version)
+if ( strcmp(matlab_version,'2014b')==0)
 freezeColors
+end
 while handles.stop_now~=1
     for loop=2:size(Images,3)
         set(h,'CData',Images(:,:,loop))
-        colormap gray
+        if ( strcmp(matlab_version,'2014b')==0)
+        colormap gray;
         freezeColors %freeze this plot's colormap
+        else
+        colormap (hFig,'gray');    
+        end
         pause(0.05)
         handles=guidata(hObject);            
         if strcmp(handles.DataType{1},'CINE')

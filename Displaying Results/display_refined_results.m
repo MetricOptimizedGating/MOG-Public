@@ -45,14 +45,20 @@ handles.N_HR=RRIntervals_to_RR(diff(Optimization.RWaveTimes),extract_times(Data_
 guidata(hObject, handles);
 % --- Outputs from this function are returned to the command line.
 function varargout = display_results_OutputFcn(hObject, eventdata, handles)  %#ok<*STOUT>
+matlab_version = version('-release');
 Images=handles.Images;
         if strcmp(handles.DataType{1},'CINE')
 h=imshow(Images(:,:,1),[min(min(min((Images(handles.yDimensions,handles.xDimensions,:))))),max(max(max((Images(handles.yDimensions,handles.xDimensions,:)))))],'Parent',handles.axes1);
         else
 h=imshow(Images(:,:,1),[],'Parent',handles.axes1);
         end
-colormap gray
+        ax=gca;
+if ( strcmp(matlab_version,'2014b')==0)
+colormap gray;    
 freezeColors %freeze this plot's colormap
+else
+colormap (ax,'gray');
+end
 axis 'image'
 set(h,'hittest','off')
 hFig = ancestor(hObject,'figure');
@@ -61,9 +67,13 @@ guidata(hObject, handles);
 title(handles.Protocol,'FontSize',14)
 axis 'square'
 axes(handles.axes2)
+ax2=gca;
  % won't change any frozen plots
- colormap jet
-
+if ( strcmp(matlab_version,'2014b')==0)
+    colormap jet;
+else
+    colormap (ax2,'jet');
+end
 if strcmp(handles.patientType,'Fetal')
 % xlim([110 180]);
 % ylim([110 180]);
@@ -71,7 +81,6 @@ image(110:180,110:180,flipud(handles.FigureData),'CDataMapping','scaled');
 set(gca,'YDir','normal')
 axis 'square'
 elseif strcmp(handles.patientType,'Adult')
- 
 xlim([40 110]);
 ylim([40 110]);
 image(40:110,40:110,flipud(handles.FigureData),'CDataMapping','scaled');
@@ -82,10 +91,13 @@ xlabel('Heart Rate 1','FontSize',12)
 ylabel('Heart Rate 2','FontSize',12)
 box('on');
 hold('all');
+if ( strcmp(matlab_version,'2014b')==0)
 colorbar;
 cbfreeze
 freezeColors;
-
+else
+h_cbar=colorbar;    
+end
 % mark actual minimum
 hold on;
 plot(handles.axes2,handles.OptimalRates(1,1), handles.OptimalRates(1,2), 'w+');
@@ -96,7 +108,7 @@ plot(handles.axes3,handles.t,handles.Two_HR)
 hold on
 plot(handles.axes3,handles.t,handles.N_HR,'r')
 hold off
-axis([0 max(handles.t) 110 180])
+axis([0 max(handles.t) 60 180])
 xlabel('Time (s)')
 ylabel('HR (bpm)')
 legend('Two-Parameter Heart Rate Model','Multi-Parameter Heart Rate Model','location','NW')
@@ -104,8 +116,12 @@ legend('Two-Parameter Heart Rate Model','Multi-Parameter Heart Rate Model','loca
 while handles.stop_now~=1
     for loop=2:size(Images,3)
         set(h,'CData',Images(:,:,loop))
+        if ( strcmp(matlab_version,'2014b')==0)
         colormap gray
         freezeColors %freeze this plot's colormap
+        else
+        colormap (hFig,'gray');       
+        end
         pause(0.05)
         handles=guidata(hObject);            
         if strcmp(handles.DataType{1},'CINE')

@@ -1,4 +1,4 @@
-function entropy_landscape_GUI(ZI,optimalrates,patientType)
+function entropy_landscape_GUI(ZI,optimalrates,patientType,matlab_version)
 
 if strcmp(patientType,'Fetal')
 % xlim([110 180]);
@@ -21,7 +21,9 @@ ylabel('Heart Rate 2','FontSize',12)
 box('on');
 hold('all');
 colorbar;
+if ( strcmp(matlab_version,'2014b')==0)
 cbfreeze
+end
 
 % mark actual minimum
 hold on;

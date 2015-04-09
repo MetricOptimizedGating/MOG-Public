@@ -20,7 +20,7 @@ Cine SSFP and PC image sequence parameters for 1.5 T are provided below. For PC 
 
 ![](http://i.imgur.com/xjx9KZA.png)
 
-A full description of fetal cardiovascular MRI is found in [Seed M, Macgowan CK. Fetal cardiovascular MRI. Magnetom FLASH. 2014;2:66-72, found in www.siemens.com/magnetom-world.](http://www.healthcare.siemens.com/siemens_hwem-hwem_ssxa_websites-context-root/wcm/idc/groups/public/@global/@imaging/@mri/documents/download/mdaz/mdmz/~edisp/mri_57_seed-01390790.pdf)
+A full description of fetal cardiovascular MRI is found in [Seed M, Macgowan CK. Fetal cardiovascular MRI. Magnetom FLASH. 2014;2:66-72](http://www.healthcare.siemens.com/siemens_hwem-hwem_ssxa_websites-context-root/wcm/idc/groups/public/@global/@imaging/@mri/documents/download/mdaz/mdmz/~edisp/mri_57_seed-01390790.pdf), found in www.siemens.com/magnetom-world.
 
 To run code: 
     

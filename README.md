@@ -12,6 +12,16 @@ For more information on MOG, visit: http://www.sickkids.ca/Research/fetalMRI/MOG
 
 ![](http://i.imgur.com/erSgEDP.jpg)
 ====
+Image Acquisition:
+
+An artificial gating trace is used for the fetal waveform, for most fetuses an R-R interval of 545 ms corresponding to a heart rate of 110 beats per minute will ensure that every heartbeat is oversampled. Siemens IDEA command tool can be used to define the R-R interval. 
+
+Cine SSFP and PC image sequence parameters for 1.5 T are provided below. For PC vessel flow quantification, a minimum of 8 voxels over the area and temporal resolution of 50 ms is used.
+
+![](http://i.imgur.com/xjx9KZA.png)
+
+A full description of fetal cardiovascular MRI is found in [Seed M, Macgowan CK. Fetal cardiovascular MRI. Magnetom FLASH. 2014;2:66-72, found in www.siemens.com/magnetom-world.](http://www.healthcare.siemens.com/siemens_hwem-hwem_ssxa_websites-context-root/wcm/idc/groups/public/@global/@imaging/@mri/documents/download/mdaz/mdmz/~edisp/mri_57_seed-01390790.pdf)
+
 To run code: 
     
     Add the MOG-Public directory to your MATLAB path

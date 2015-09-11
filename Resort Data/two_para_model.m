@@ -11,7 +11,6 @@
 %   RWaveTimes      - List of the times at which R-waves occur (in ms)
 
 function RWaveTimes = two_para_model(ScanLength, Parameters)
-
 %% Convert heart rates into RR-interval lengths
 Periods = 60000./Parameters;
 

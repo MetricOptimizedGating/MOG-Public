@@ -33,6 +33,9 @@ NormalizedImages(NormalizedImages == 0) = 1;
 
 %% Compute entropy
 PixelEntropies = sum(NormalizedImages.*log(NormalizedImages),3);
+if (isnan(sum(PixelTotals(:)))==1)
+1
+end
 if sum(PixelTotals(:))
     PixelWeights = PixelTotals/sum(PixelTotals(:));
 else

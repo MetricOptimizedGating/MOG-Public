@@ -20,7 +20,7 @@ rs =     [10 4 3 2 1];
 offset = [35 8 6 4 2];
 nFrames = 10;
 % initialize to some bogus value. Metric doesn't exceed 4
-minmetric = 100;
+minmetric = 1000000;
 
 % keep track of heart rate pairs searched and its corresponding
 % image metric to generate landscape
@@ -86,6 +86,7 @@ for k=1:length(rs)
             minhr1 = hr1;
             minhr2 = hr2;
             
+            
         end
         
         % partially reconstruct
@@ -127,7 +128,7 @@ Optimization.metrix=metrix;
 Optimization.hr1s=hr1s;
 Optimization.hr2s=hr2s;
 
-if strcmp(Data_Properties.DataType{2},'ZEROS')
+if strcmp(Data_Properties.DataType{2},'ZEROS') && ~strcmp(Data_Properties.DataType{3},'MSENSE')
 Data_Properties.DataType{2}='GRAPPA';
 end
 

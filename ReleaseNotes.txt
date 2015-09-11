@@ -1,17 +1,12 @@
-MOG 2.3
+MOG 2.6
 
-Release Date Nov 28, 2014
+Release Date September 11, 2015
 
 A) Additions
 
-- Added option to run multi parameter model afer two parameter model with refine button when displaying results.  Results from mulit-paramter model are subsequently displayed
-
-- Added version check to run every 30 days againts latest release on github.
-
+Patching works on VE, VD and VB Grappa (tested on various GRAPPA scheme), Msense and full for PC and CINE.
+Select ROI MSense ROI visual does not work yet, image will be aliased.
 B) Removals
+Read and write function for Siemens removed from this version on Github but available on the IDEA website. Added description of new patching scheme readme for Siemens data on the IDEA website version.  
 C) Changes
 D) Fixes
-
-Tested on MATLAB 2013b and 2012b.
-
-Note: Refine method is quite small

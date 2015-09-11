@@ -27,9 +27,12 @@ for iVelocityEncodes = 1:nVelocityEncodes
     Times=extract_times(Data(:,iVelocityEncodes));
     % Calculate weights and indices for linear nearest neighboor interpolation
     [LeftIndices,RightIndices,LeftWeights,RightWeights] = CardiacPhase_Interpolation(size(Times,1),size(Times,2),Times,RWaveTimes,nFrames);
-
+LeftWeights(isnan(LeftWeights))=0;
+RightWeights(isnan(RightWeights))=0;
+    
     for iFrame = 1:nFrames        
-        for iRow = start_row:nRows            
+        for iRow = floor(start_row):nRows            
+           
             KSpace(:,:,iRow,iFrame,iVelocityEncodes) = Data(iRow,iVelocityEncodes).KSpace(:,:,LeftIndices(iFrame,iRow)).*LeftWeights(iFrame,iRow)+Data(iRow,iVelocityEncodes).KSpace(:,:,RightIndices(iFrame,iRow)).*RightWeights(iFrame,iRow);
         end
     end

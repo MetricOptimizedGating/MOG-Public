@@ -21,4 +21,6 @@ end
 if Times(end,2,1)<Times(end,1,1)
 Times(end,1,1)=Times(end-1,1,1)-Times(end-2,1,1)+Times(end-1,1,1);
 end
+minTimes=min(min(min(Times)));
+Times=Times-minTimes;
 end

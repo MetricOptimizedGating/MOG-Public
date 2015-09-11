@@ -1,8 +1,8 @@
 function entropy_landscape_GUI(ZI,optimalrates,patientType,matlab_version)
 
 if strcmp(patientType,'Fetal')
-% xlim([110 180]);
-% ylim([110 180]);
+xlim([110 180]);
+ylim([110 180]);
 image(110:180,110:180,flipud(ZI),'CDataMapping','scaled');
 set(gca,'YDir','normal')
 axis 'square'

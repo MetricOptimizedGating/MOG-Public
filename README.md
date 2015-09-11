@@ -1,6 +1,6 @@
 ![](http://i.imgur.com/aJv2BDL.jpg)
 ====
-MOG is a MATLAB based image reconstruction pipeline for metric based gating in fetal cardiac MRI. It was developed at The Hospital for Sick Children in Toronto, Canada. It is licensed for non-commercial use. Two publications have been published on metric optimized gating. If you use MOG in a scientific paper please cite:  1) Jansz MS, Seed M, van Amerom JF, et al. Metric Optimized gating for fetal cardiac MRI. Magn Reson Med 2010;64(5):1304-1314.  2) Roy CW, Seed M, van Amerom JF, et al. Dynamic imaging of the fetal heart using metric optimized gating. Magn Reson Med 2013;70(6):1598-1607.
+MOG is a MATLAB based image reconstruction pipeline for metric based gating in fetal cardiac MRI. It was developed at The Hospital for Sick Children in Toronto, Canada. It is licensed for non-commercial use. Two publications have been published on metric optimized gating. If you use MOG in a scientific paper please cite:  1) [Jansz MS, Seed M, van Amerom JF, et al. Metric Optimized gating for fetal cardiac MRI. Magn Reson Med 2010;64(5):1304-1314.](http://onlinelibrary.wiley.com/doi/10.1002/mrm.22542/abstract;jsessionid=85B077FC76AB3F7A796D422002BB9CC6.f02t01?deniedAccessCustomisedMessage=&userIsAuthenticated=false)  2) [Roy CW, Seed M, van Amerom JF, et al. Dynamic imaging of the fetal heart using metric optimized gating. Magn Reson Med 2013;70(6):1598-1607.](http://onlinelibrary.wiley.com/doi/10.1002/mrm.24614/abstract?deniedAccessCustomisedMessage=&userIsAuthenticated=false)
 
 The Metric Optimization code found here initially uses two-parameter optimization as described in Jansz et al. and allows the option to refine the results with the multi-parameter model as described in Roy et al. The multi-parameter model is quite slow especially if the initial start point is far from the optimized heart rate.
 
@@ -12,6 +12,16 @@ For more information on MOG, visit: http://www.sickkids.ca/Research/fetalMRI/MOG
 
 ![](http://i.imgur.com/erSgEDP.jpg)
 ====
+Image Acquisition:
+
+An artificial gating trace is used for the fetal waveform, for most fetuses an R-R interval of 545 ms corresponding to a heart rate of 110 beats per minute will ensure that every heartbeat is oversampled. Siemens IDEA command tool can be used to define the R-R interval. 
+
+Cine SSFP and PC image sequence parameters for 1.5 T are provided below. For PC vessel flow quantification, a minimum of 8 voxels over the area and a temporal resolution of 50 ms is used.
+
+![](http://i.imgur.com/xjx9KZA.png)
+
+A full description of fetal cardiovascular MRI is found in [Seed M, Macgowan CK. Fetal cardiovascular MRI. Magnetom FLASH. 2014;2:66-72](http://www.healthcare.siemens.com/siemens_hwem-hwem_ssxa_websites-context-root/wcm/idc/groups/public/@global/@imaging/@mri/documents/download/mdaz/mdmz/~edisp/mri_57_seed-01390790.pdf), in www.siemens.com/magnetom-world.
+
 To run code: 
     
     Add the MOG-Public directory to your MATLAB path

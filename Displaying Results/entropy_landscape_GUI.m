@@ -21,7 +21,7 @@ ylabel('Heart Rate 2','FontSize',12)
 box('on');
 hold('all');
 colorbar;
-if ( strcmp(matlab_version,'2014b')==0)
+if ( verLessThan('matlab','8.4') ) 
 cbfreeze
 end
 

@@ -7,7 +7,7 @@ if (fid==-1),
     error(['Error reading ', filename,' in ', pathname,' directory']),
 end
 %%% Read in each line of header text
-nHeader_Lines=5000; % Arbitrary number of lines to read in past patient info, may change for different data types.
+nHeader_Lines=10000; % Arbitrary number of lines to read in past patient info, may change for different data types.
 Header=cell(nHeader_Lines,1);
 for loop=1:nHeader_Lines
     Header{loop,1} = fgetl(fid);

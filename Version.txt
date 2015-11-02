@@ -1,2 +1,2 @@
-2.6
-September 10, 2015
+2.7
+November 2, 2015

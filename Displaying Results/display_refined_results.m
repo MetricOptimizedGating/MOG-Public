@@ -52,7 +52,7 @@ h=imshow(Images(:,:,1),[min(min(min((Images(handles.yDimensions,handles.xDimensi
 h=imshow(Images(:,:,1),[],'Parent',handles.axes1);
         end
         ax=gca;
-if ( verLessThan('matlab','8.4') )
+if ( verLessThan('matlab','8.4'))
 colormap gray;    
 freezeColors %freeze this plot's colormap
 else
@@ -68,7 +68,7 @@ axis 'square'
 axes(handles.axes2)
 ax2=gca;
  % won't change any frozen plots
-if ( verLessThan('matlab','8.4') )
+if ( verLessThan('matlab','8.4'))
     colormap jet;
 else
     colormap (ax2,'jet');
@@ -90,7 +90,7 @@ xlabel('Heart Rate 1','FontSize',12)
 ylabel('Heart Rate 2','FontSize',12)
 box('on');
 hold('all');
-if ( verLessThan('matlab','8.4') )
+if (verLessThan('matlab','8.4'))
 colorbar;
 cbfreeze
 freezeColors;
@@ -115,7 +115,7 @@ legend('Two-Parameter Heart Rate Model','Multi-Parameter Heart Rate Model','loca
 while handles.stop_now~=1
     for loop=2:size(Images,3)
         set(h,'CData',Images(:,:,loop))
-        if ( verLessThan('matlab','8.4') )
+        if ( verLessThan('matlab','8.4'))
         colormap gray
         freezeColors %freeze this plot's colormap
         else

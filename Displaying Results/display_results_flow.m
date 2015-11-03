@@ -49,7 +49,7 @@ h=imshow(Images(:,:,1),[min(min(min((Images(handles.yDimensions,handles.xDimensi
 h=imshow(Images(:,:,1),[],'Parent',handles.axes1);
         end
         ax=gca;
-if ( verLessThan('matlab','8.4') )        
+if ( verLessThan('matlab','8.4'))        
 colormap gray
 freezeColors %freeze this plot's colormap
 else
@@ -63,19 +63,19 @@ guidata(hObject, handles);
 title(handles.Protocol,'FontSize',14)
 axis 'square'
 ax2=gca;
-if ( verLessThan('matlab','8.4') )
+if ( verLessThan('matlab','8.4'))
 colormap jet % won't change any frozen plots
 else     
 colormap (ax2,'jet');
 end
 entropy_landscape_GUI(handles.FigureData,handles.OptimalRates,handles.patientType)
-if ( verLessThan('matlab','8.4') )
+if ( verLessThan('matlab','8.4'))
 freezeColors
 end
 while handles.stop_now~=1
     for loop=2:size(Images,3)
         set(h,'CData',Images(:,:,loop))
-        if (verLessThan('matlab','8.4') )
+        if ( verLessThan('matlab','8.4'))
         colormap gray
         freezeColors %freeze this plot's colormap
         else

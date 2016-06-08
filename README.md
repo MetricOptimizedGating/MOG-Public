@@ -41,7 +41,7 @@ Once two-parameter optimization is complete a plot of two heart rates applied to
 
 ![](http://i.imgur.com/uCQb0Iz.jpg)
 
-To run the multi-parameter model select refine, once optimization is complete a plot of heart rates from the two-parameter and multi-parameter model is displayed. 
+To run the multi-parameter model select refine, once optimization is complete a plot of heart rates from the two-parameter and multi-parameter model is displayed. The muli-parameter model is available for anatomical scanning only. 
 
 ![](http://i.imgur.com/x8IbOBB.jpg)
 ===

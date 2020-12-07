@@ -56,4 +56,5 @@ A version of MOG which inputs Siemens raw data header files (*.dat) and outputs 
 
 ![](http://i.imgur.com/SmDExh1.jpg)
 ====
-Questions or comments? Contact us by creating a new issue on this page or directly: Chris Roy: christopher.roy@sickkids.ca
+Questions or comments? Contact us by creating a new issue on this page or directly: Chris Macgowan: christopher.macgowan@sickkids.ca
+.ca
